@@ -17,7 +17,7 @@ add_action('init', 'diggbarred_do_the_shit');
 function diggbarred_do_the_shit() 
 {
 	
-	if(preg_match('#http://digg.com/\w{1,8}/?$#', $_SERVER['HTTP_REFERER'])) 
+	if(preg_match('#http://digg.com/\w{1,8}[?/]*$#', $_SERVER['HTTP_REFERER'])) 
 	{
 	    echo get_option('diggbarred_message');
 	    exit;
