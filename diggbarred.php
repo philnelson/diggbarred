@@ -3,14 +3,14 @@
 Plugin Name: Diggbarred
 Author: Phil Nelson
 Author URI: http://extrafuture.com/
-Version: 1.51
+Version: 1.6
 Description: Blocks all traffic from Digg from viewing your content, replacing it with a message to users. Idea and DiggBar blocking regex taken  from <a href="http://daringfireball.net/2009/04/how_to_block_the_diggbar" title="Daring Fireball: How to Block the DiggBar">Daring Fireball</a>.
 Plugin URI: http://extrafuture.com/projects/diggbarred
 
 */
 
-add_option("diggbarred_version", "1.51");
-add_option("diggbarred_message", 'Dear Digg, Go fuck yourself.');
+add_option("diggbarred_version", "1.6");
+add_option("diggbarred_message", 'Usage of the diggbar <a href="http://daringfireball.net/2009/04/how_to_block_the_diggbar">harms the internet</a> and this site blocks all requests via the digg in protest.  To view this page please visit it directly.');
 add_option("diggbarred_style","width: 30%; line-height: 17px; text-align: justify; margin: 20% auto 0 auto; font-family: verdana, sans-serif; font-size: 13px;");
 
 add_action('init', 'diggbarred_do_the_shit');
@@ -20,6 +20,9 @@ function diggbarred_do_the_shit()
 	
 	if(preg_match('#http://digg.com/\w{1,8}/*(\?.*)?$#', $_SERVER['HTTP_REFERER'])) 
 	{
+		// Header calls thanks to http://plasmasturm.org/log/538/ and AJ Sutton http://github.com/ajsutton
+		header("HTTP/1.0 403 Digg bar is blocked in protest", true, 403);
+		header("Vary: Referer");
 	    echo '<div style="'.get_option('diggbarred_style').'"><p>' . get_option('diggbarred_message') . '</p></div>';
 	    exit;
 	}
