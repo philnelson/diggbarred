@@ -20,7 +20,7 @@ function diggbarred_do_the_shit()
 	
 	if(preg_match('#http://digg.com/\w{1,8}/*(\?.*)?$#', $_SERVER['HTTP_REFERER'])) 
 	{
-		// Header calls thanks to http://plasmasturm.org/log/538/ and AJ Sutton http://github.com/ajsutton
+		// Header calls thanks to Aristotle Pagaltzis http://plasmasturm.org/log/538/ and AJ Sutton http://github.com/ajsutton
 		header("HTTP/1.0 403 Digg bar is blocked in protest", true, 403);
 		header("Vary: Referer");
 	    echo '<div style="'.get_option('diggbarred_style').'"><p>' . get_option('diggbarred_message') . '</p></div>';
