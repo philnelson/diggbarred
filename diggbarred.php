@@ -10,7 +10,7 @@ Plugin URI: http://extrafuture.com/projects/diggbarred
 */
 
 add_option("diggbarred_version", "1.6");
-add_option("diggbarred_message", 'Dear Digg,<br> You DiggBar sucks, and is <a href="http://daringfireball.net/2009/04/how_to_block_the_diggbar">harming the internet</a>.');
+add_option("diggbarred_message", 'Dear Digg,<br> Your DiggBar sucks, and is <a href="http://daringfireball.net/2009/04/how_to_block_the_diggbar">harming the internet</a>. We\'re blocking it.');
 add_option("diggbarred_style","width: 30%; line-height: 17px; text-align: justify; margin: 20% auto 0 auto; font-family: verdana, sans-serif; font-size: 13px;");
 
 add_action('init', 'diggbarred_do_the_shit');
